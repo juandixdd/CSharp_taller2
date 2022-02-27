@@ -8,8 +8,24 @@ namespace CSharp_taller2
 
         public void addClient(Clients client)
         {
-            clients.Add(client);
-            Console.WriteLine("Cliente agregado");
+            Boolean exist = false;
+
+            foreach (Clients item in clients)
+            {
+                if (item.id == client.id)
+                {
+                    exist = true;
+                }else{
+                    exist = false;
+                }
+            }
+
+            if (exist == false)
+            {
+                clients.Add(client);
+            }else{
+                System.Console.WriteLine("El cliente ya existe");
+            }
         }
 
         public void showClients()

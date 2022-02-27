@@ -165,7 +165,6 @@ while (option != 0)
                     if (confirmClient == "s")
                     {
                         clientsService.addClient(client);
-                        Console.WriteLine("Cliente creado");
                         executeClient = 1;
                     }
                     else
