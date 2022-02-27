@@ -15,7 +15,9 @@ namespace CSharp_taller2
                 if (item.id == client.id)
                 {
                     exist = true;
-                }else{
+                }
+                else
+                {
                     exist = false;
                 }
             }
@@ -23,8 +25,10 @@ namespace CSharp_taller2
             if (exist == false)
             {
                 clients.Add(client);
-            }else{
-                System.Console.WriteLine("El cliente ya existe");
+            }
+            else
+            {
+                Console.WriteLine("El cliente ya existe");
             }
         }
 
@@ -139,4 +143,144 @@ namespace CSharp_taller2
         }
     }
 
+    class productsService
+    {
+        ArrayList products = new ArrayList();
+
+        public void addProducts(Products product)
+        {
+            Boolean exist = false;
+
+            foreach (Products item in products)
+            {
+                if (item.id == product.id)
+                {
+                    exist = true;
+                }
+                else
+                {
+                    exist = false;
+                }
+            }
+
+            if (exist == false)
+            {
+                products.Add(product);
+            }
+            else
+            {
+                Console.WriteLine("El producto ya existe");
+            }
+        }
+
+        public void showProducts()
+        {
+            Console.Clear();
+            Console.WriteLine("************************");
+            Console.WriteLine("** Lista de productos: **");
+            Console.WriteLine("************************");
+
+            if (products.Count == 0)
+            {
+                Console.WriteLine("No hay productos");
+            }
+            else
+            {
+                foreach (Products product in products)
+                {
+                    Console.WriteLine("Nombre: " + product.name);
+                    Console.WriteLine("     - Precio: " + product.price);
+                    Console.WriteLine("     - Stock: " + product.stock);
+                    Console.WriteLine("     - Id: " + product.id);
+                    Console.WriteLine("***************************************************");
+                }
+            }
+
+        }
+
+        public void findProduct(string id)
+        {
+            Console.Clear();
+
+            foreach (Products product in products)
+            {
+                if (product.id.ToString() == id)
+                {
+                    Console.WriteLine("************************");
+                    Console.WriteLine("** Producto **");
+                    Console.WriteLine("Nombre: " + product.name);
+                    Console.WriteLine("     - Precio: " + product.price);
+                    Console.WriteLine("     - Stock: " + product.stock);
+                    Console.WriteLine("     - Id: " + product.id);
+                    Console.WriteLine("***************************************************");
+                }
+                else
+                {
+                    Console.WriteLine("El producto no existe");
+                }
+            }
+        }
+
+        public void editProduct(string id)
+        {
+            Console.Clear();
+
+            Console.WriteLine("");
+            foreach (Products product in products)
+            {
+                if (product.id.ToString() == id)
+                {
+                    Console.WriteLine("Ingrese el nuevo nombre del producto:");
+                    product.name = Console.ReadLine();
+                    Console.WriteLine("Ingrese el nuevo precio del producto:");
+                    product.price = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Ingrese el nuevo stock del producto:");
+                    product.stock = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Ingrese el nuevo id del producto:");
+                    product.id = int.Parse(Console.ReadLine());
+                    Console.WriteLine("");
+                    Console.WriteLine("Producto editado");
+                    Console.WriteLine("");
+                    Console.WriteLine("Nombre: " + product.name);
+                    Console.WriteLine("Precio: " + product.price);
+                    Console.WriteLine("Stock: " + product.stock);
+                    Console.WriteLine("Id: " + product.id);
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("El producto no existe");
+                }
+            }
+
+        }
+
+        public void deleteProduct(string id){
+            Console.Clear();
+
+            Console.WriteLine("Está seguro que desea eliminar el producto? (s/n)");
+            String answer = Console.ReadLine();
+
+            if (answer == "s")
+            {
+                foreach (Products product in products)
+                {
+                    if (product.id.ToString() == id)
+                    {
+                        products.Remove(product);
+                        Console.WriteLine("Producto eliminado");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("El producto no existe");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se eliminó el producto");
+            }
+        }
+    }
 }

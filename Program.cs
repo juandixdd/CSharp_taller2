@@ -2,6 +2,7 @@
 using CSharp_taller2;
 
 clientsService clientsService = new clientsService();
+productsService productsService = new productsService();
 
 Console.WriteLine("*****************************");
 Console.WriteLine("** Bienvenido a JuandiTech **");
@@ -47,6 +48,12 @@ while (execute == 0)
 /* Valida que el dato ingresado sea un número y lo guarda en la variable option */
 Console.WriteLine("Por favor ingrese el módulo al que desea acceder o ingrese '0' para salir");
 Console.WriteLine("1. Módulo de clientes");
+Console.WriteLine("2. Módulo de productos");
+Console.WriteLine("3. Módulo de ventas");
+Console.WriteLine("4. Módulo de reportes");
+Console.WriteLine("5. Módulo de configuración");
+
+
 
 int option = 0;
 while (option == 0)
@@ -103,7 +110,6 @@ while (option != 0)
             /* Crear cliente */
             if (optionClient == 1)
             {
-                Console.Clear();
 
                 Console.WriteLine("");
                 Console.WriteLine("Ingrese el nombre del cliente:");
@@ -278,7 +284,207 @@ while (option != 0)
                 Console.WriteLine("Por favor ingrese una opción válida");
             }
             break;
-            // *****************************************/ / / Modulo de clientes / / / *******************************************************************************
+        // *****************************************/ / / Modulo de clientes / / / *******************************************************************************
 
+        // *****************************************/ / / Modulo de productos / / / *******************************************************************************
+        case 2:
+
+            Products product = new Products();
+
+            Console.WriteLine("");
+            Console.WriteLine("*****************************");
+            Console.WriteLine("**   Módulo de Productos    **");
+            Console.WriteLine("*****************************");
+            Console.WriteLine("");
+            Console.WriteLine("Por favor ingrese la acción que desea realizar");
+            Console.WriteLine("");
+            Console.WriteLine("1. Crear producto");
+            Console.WriteLine("2. Buscar productos");
+            Console.WriteLine("3. Actualizar producto");
+            Console.WriteLine("4. Eliminar producto");
+
+            int optionProduct = 0;
+
+            while (optionProduct == 0)
+            {
+                try
+                {
+                    optionProduct = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Por favor ingrese un número");
+                }
+            }
+
+            /* Crear producto */
+            if (optionProduct == 1)
+            {
+
+                Console.WriteLine("");
+                Console.WriteLine("Ingrese el nombre del producto:");
+                product.name = Console.ReadLine();
+
+                Console.WriteLine("Ingrese el precio del producto:");
+                int price = 0;
+                while (price == 0)
+                {
+                    try
+                    {
+                        price = int.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Por favor ingrese un número");
+                    }
+                }
+                product.price = price;
+
+                Console.WriteLine("Ingrese la cantidad del producto:");
+                int stock = 0;
+                while (stock == 0)
+                {
+                    try
+                    {
+                        stock = int.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Por favor ingrese un número");
+                    }
+                }
+                product.stock = stock;
+
+                Console.WriteLine("Ingrese el código del producto:");
+                int code = 0;
+                while (code == 0)
+                {
+                    try
+                    {
+                        code = int.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Por favor ingrese un número");
+                    }
+                }
+                product.id = code;
+
+                /* Confirmar datos */
+                Console.WriteLine("");
+                Console.WriteLine("Producto agregado:  ");
+                Console.WriteLine("");
+                Console.WriteLine("Nombre: " + product.name);
+                Console.WriteLine("Precio: " + product.price);
+                Console.WriteLine("Cantidad: " + product.stock);
+                Console.WriteLine("Código: " + product.id);
+                Console.WriteLine("");
+                Console.WriteLine(
+                    "Presione 's' para confirmar, o cualquier otra tecla para cancelar"
+                );
+                string confirmProduct = Console.ReadLine();
+
+                int executeProduct = 0;
+
+                while (executeProduct == 0)
+                {
+                    if (confirmProduct == "s")
+                    {
+                        productsService.addProducts(product);
+                        executeProduct = 1;
+                    }
+                    else
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Ingrese el nombre del producto:");
+                        product.name = Console.ReadLine();
+
+                        Console.WriteLine("Ingrese el precio del producto:");
+                        price = 0;
+                        while (price == 0)
+                        {
+                            try
+                            {
+                                price = int.Parse(Console.ReadLine());
+                            }
+                            catch
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("Por favor ingrese un número");
+                            }
+                        }
+                        product.price = price;
+
+                        Console.WriteLine("Ingrese la cantidad del producto:");
+                        stock = 0;
+                        while (stock == 0)
+                        {
+                            try
+                            {
+                                stock = int.Parse(Console.ReadLine());
+                            }
+                            catch
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("Por favor ingrese un número");
+                            }
+                        }
+                        product.stock = stock;
+
+                        Console.WriteLine("Ingrese el código del producto:");
+                        code = 0;
+                        while (code == 0)
+                        {
+                            try
+                            {
+                                code = int.Parse(Console.ReadLine());
+                            }
+                            catch
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("Por favor ingrese un número");
+                            }
+                        }
+                        product.id = code;
+
+                        Console.WriteLine("Producto ingresado");
+                        Console.WriteLine("");
+                        Console.WriteLine("Nombre: " + product.name);
+                        Console.WriteLine("Precio: " + product.price);
+                        Console.WriteLine("Cantidad: " + product.stock);
+                        Console.WriteLine("Código: " + product.id);
+
+
+                        Console.WriteLine("");
+                        Console.WriteLine(
+                            "Presione 's' para confirmar, o cualquier otra tecla para cancelar"
+                        );
+                        confirmProduct = Console.ReadLine();
+                    }
+
+                }
+            }
+            else if(optionProduct == 2){
+                
+            }
+
+            else if (optionProduct == 5)
+            {
+
+                productsService.showProducts();
+            }
+            else
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Por favor ingrese una opción válida");
+            }
+
+
+
+            break;
     }
 }

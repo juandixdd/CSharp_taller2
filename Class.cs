@@ -8,4 +8,12 @@ namespace CSharp_taller2
         public string id;
     }
 
+    class Products
+    {
+        public string name;
+        public int price;
+        public int stock;
+        public int id;
+    }
+
 }
