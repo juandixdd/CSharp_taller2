@@ -16,4 +16,13 @@ namespace CSharp_taller2
         public int id;
     }
 
+    class Factura{
+        public string id;
+        public string clientId;
+        public string total;
+        public string date;
+        public string codProduct;
+        public string cant;
+    }
+
 }

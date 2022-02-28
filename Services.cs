@@ -34,7 +34,6 @@ namespace CSharp_taller2
 
         public void showClients()
         {
-            Console.Clear();
             Console.WriteLine("************************");
             Console.WriteLine("** Lista de clientes: **");
             Console.WriteLine("************************");
@@ -56,9 +55,9 @@ namespace CSharp_taller2
             }
         }
 
-        public void findClient(string id)
+        public Boolean findClient(string id)
         {
-            Console.Clear();
+            Boolean clientExist = false;
 
             foreach (Clients client in clients)
             {
@@ -71,17 +70,19 @@ namespace CSharp_taller2
                     Console.WriteLine("     - Telefono: " + client.phone);
                     Console.WriteLine("     - Cedula: " + client.id);
                     Console.WriteLine("***************************************************");
+                    clientExist = true;
                 }
                 else
                 {
                     Console.WriteLine("El cliente no existe");
+                    clientExist = false;
                 }
             }
+            return clientExist;
         }
 
         public void editClient(string id)
         {
-            Console.Clear();
 
             Console.WriteLine("");
             foreach (Clients client in clients)
@@ -115,7 +116,6 @@ namespace CSharp_taller2
 
         public void deleteClient(string id)
         {
-            Console.Clear();
 
             Console.WriteLine("Está seguro que desea eliminar el cliente? (s/n)");
             String answer = Console.ReadLine();
@@ -175,7 +175,6 @@ namespace CSharp_taller2
 
         public void showProducts()
         {
-            Console.Clear();
             Console.WriteLine("************************");
             Console.WriteLine("** Lista de productos: **");
             Console.WriteLine("************************");
@@ -198,9 +197,34 @@ namespace CSharp_taller2
 
         }
 
-        public void findProduct(string id)
+        /* public Boolean findClient(string id)
         {
-            Console.Clear();
+            Boolean clientExist = false;
+
+            foreach (Clients client in clients)
+            {
+                if (client.id == id)
+                {
+                    Console.WriteLine("************************");
+                    Console.WriteLine("** Cliente **");
+                    Console.WriteLine("Nombre: " + client.name);
+                    Console.WriteLine("     - Direccion: " + client.direction);
+                    Console.WriteLine("     - Telefono: " + client.phone);
+                    Console.WriteLine("     - Cedula: " + client.id);
+                    Console.WriteLine("***************************************************");
+                    clientExist = true;
+                }
+                else
+                {
+                    Console.WriteLine("El cliente no existe");
+                    clientExist = false;
+                }
+            }
+            return clientExist;
+        } */
+
+        public Boolean findProduct(string id){
+            Boolean productExist = false;
 
             foreach (Products product in products)
             {
@@ -213,17 +237,19 @@ namespace CSharp_taller2
                     Console.WriteLine("     - Stock: " + product.stock);
                     Console.WriteLine("     - Id: " + product.id);
                     Console.WriteLine("***************************************************");
+                    productExist = true;
                 }
                 else
                 {
                     Console.WriteLine("El producto no existe");
+                    productExist = false;
                 }
             }
+            return productExist;
         }
 
         public void editProduct(string id)
         {
-            Console.Clear();
 
             Console.WriteLine("");
             foreach (Products product in products)
@@ -256,8 +282,6 @@ namespace CSharp_taller2
         }
 
         public void deleteProduct(string id){
-            Console.Clear();
-
             Console.WriteLine("Está seguro que desea eliminar el producto? (s/n)");
             String answer = Console.ReadLine();
 
